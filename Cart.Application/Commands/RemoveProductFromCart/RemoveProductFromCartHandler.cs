@@ -35,7 +35,7 @@ namespace Cart.Application.Commands.RemoveProductFromCart
 
             var cartStreamState = await _documentSession.Events.FetchStreamStateAsync(cart.Id, cancellationToken);
             _documentSession.Events.Append(request.CartId, cartStreamState!.Version + 1, new ProductRemoved(request.CartId, item.Id, request.Quantity));
-            await helper.ReserveProductAsync(request.ProductId, request.Quantity);
+            await helper.RestoreProductAsync(request.ProductId, request.Quantity);
 
             var jobHelper = new JobSchedulerHelper(_jobRepository, _backgroundJobClient, _mediator);
             await jobHelper.RescheduleJob(request.CartId);

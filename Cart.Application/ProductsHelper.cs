@@ -16,7 +16,7 @@ namespace Cart.Application
         {
             using var httpClient = new HttpClient();
 
-            var response = await httpClient.GetAsync("http://product:8080/");
+            var response = await httpClient.GetAsync("http://product:8080/product");
 
             response.EnsureSuccessStatusCode();
 
@@ -42,7 +42,7 @@ namespace Cart.Application
 
             var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
 
-            var response = await httpClient.PatchAsync("http://product.api:8084/product/reserve", content);
+            var response = await httpClient.PatchAsync("http://product:8080/product/reserve", content);
             response.EnsureSuccessStatusCode();
         }
 
@@ -58,7 +58,7 @@ namespace Cart.Application
 
             var content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
 
-            var response = await httpClient.PatchAsync("http://product.api:8084/product/restore", content);
+            var response = await httpClient.PatchAsync("http://product:8080/product/restore", content);
             response.EnsureSuccessStatusCode();
         }
 
