@@ -21,7 +21,7 @@ const ProductListScreen = () => {
         setError(viewModel.getError());
       };
       loadProducts();
-    }, [viewModel]) // viewModel jako zależność, aby uniknąć błędów
+    }, [viewModel]) 
   );
 
 

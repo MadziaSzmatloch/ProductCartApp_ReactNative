@@ -12,7 +12,7 @@ const ProductDetailScreen = () => {
 
   const handleAddToCart = async () => {
     setLoading(true);
-    await viewModel.addToCart(product.id, 1); // Default quantity: 1
+    await viewModel.addToCart(product.id, 1);
     setLoading(viewModel.getLoading());
     setError(viewModel.getError());
   };

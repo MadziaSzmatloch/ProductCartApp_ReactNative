@@ -20,7 +20,7 @@ const CartScreen = () => {
   }, []);
 
   const handleRemoveFromCart = async (productId) => {
-    await viewModel.removeFromCart(productId, 1); // Default quantity: 1
+    await viewModel.removeFromCart(productId, 1);
     const cart = viewModel.getCart();
     setCartItems(cart?.items || []);
     setLoading(viewModel.getLoading());
